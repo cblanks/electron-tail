@@ -1,13 +1,21 @@
 {
   "name": "electron-tail",
+  "productName": "Electron Tail",
   "version": "0.0.0",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "icon:macos": "convert src/assets/app.jpeg src/assets/app.icns",
+    "icon:win": "convert src/assets/app.jpeg src/assets/app.ico",
+    "icon:linux": "convert src/assets/app.jpeg src/assets/app.png",
+    "start": "concurrently -k \"ng serve\" \"npm:electron\"",
+    "build": "ng build --base-href ./ --prod=true",
+    "package:macos": "electron-packager . $npm_package_productName --out=dist/macos --platform=darwin --arch=x64 --icon=src/assets/app.icns",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "preelectron": "tsc preload.ts && tsc main.ts",
+    "electron": "wait-on http://localhost:4200/ && electron ."
   },
   "private": true,
   "dependencies": {
@@ -27,10 +35,15 @@
     "@angular-devkit/build-angular": "~0.901.9",
     "@angular/cli": "~9.1.9",
     "@angular/compiler-cli": "~9.1.11",
-    "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "concurrently": "^5.2.0",
+    "electron": "^9.0.4",
+    "electron-packager": "^14.2.1",
+    "electron-reload": "^1.5.0",
+    "install": "^0.13.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~5.0.0",
@@ -38,9 +51,11 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "npm": "^6.14.5",
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "wait-on": "^5.0.1"
   }
 }

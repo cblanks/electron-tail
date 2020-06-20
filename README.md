@@ -1,8 +1,11 @@
 # electron-tail
 
-Aim: a cross-platform file tailing app based on electron, and nicely configurable a la hyper or VS Code
+## Aims 
 
-Questions:
+A cross-platform file tailing app based on electron, and nicely configurable a la hyper or VS Code
+
+## Questions
+
 1. Is there already a project like this?
     - https://github.com/tmoreno/open-log-viewer
 1. What are people's favourite features from tail apps?
