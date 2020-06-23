@@ -17,6 +17,7 @@ Features:
 - Search and filter terms
 - show only/suppress lines based on keywords (expand collapse with one click)
 - collapse prefix
+- connect to remote servers and tail?
 
 Display Options:
 - font family
