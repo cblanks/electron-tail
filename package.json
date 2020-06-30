@@ -5,9 +5,7 @@
   "main": "main.js",
   "scripts": {
     "ng": "ng",
-    "icon:macos": "convert src/assets/app.jpeg src/assets/app.icns",
-    "icon:win": "convert src/assets/app.jpeg src/assets/app.ico",
-    "icon:linux": "convert src/assets/app.jpeg src/assets/app.png",
+    "icons": "./node_modules/.bin/electron-icon-builder --input=src/assets/app.jpeg --output=src/assets",
     "start": "concurrently -k \"ng serve\" \"npm:electron\"",
     "build": "ng build --base-href ./ --prod=true",
     "package:macos": "electron-packager . $npm_package_productName --out=dist/macos --platform=darwin --arch=x64 --icon=src/assets/app.icns",
@@ -41,6 +39,7 @@
     "codelyzer": "^5.1.2",
     "concurrently": "^5.2.0",
     "electron": "^9.0.4",
+    "electron-icon-builder": "^1.0.2",
     "electron-packager": "^14.2.1",
     "electron-reload": "^1.5.0",
     "install": "^0.13.0",
