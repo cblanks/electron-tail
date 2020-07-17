@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 import { template } from './electron-app/menu-template';
 import { environment } from './src/environments/environment';
@@ -36,6 +36,10 @@ function createWindow() {
       mode: 'detach',
     });
   }
+
+  // Define app menu
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
 }
 
 // This method will be called when Electron has finished
