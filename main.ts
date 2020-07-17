@@ -1,10 +1,13 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
+import { template } from './electron-app/menu-template';
 import { environment } from './src/environments/environment';
-import * as electronReload from 'electron-reload';
+
+declare function require(moduleName: string): any;
 
 if (!environment.production) {
   // Enable live reload for Electron.
+  const electronReload = require('electron-reload');
   electronReload(__dirname, {
     electron: path.join(__dirname, 'node_modules', '.bin', 'electron'),
     forceHardReset: true
@@ -21,7 +24,7 @@ function createWindow() {
     width: 900,
   });
 
-  // and load the index.html of the app.
+  // Load the app content.
   if (environment.production) {
     mainWindow.loadFile(path.join(__dirname, '/dist/electron-tail/index.html'));
 
