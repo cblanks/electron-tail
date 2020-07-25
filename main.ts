@@ -1,6 +1,6 @@
 import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
-import { template } from './electron-app/menu-template';
+import { template } from './src/electron-app/menu-template';
 import { environment } from './src/environments/environment';
 
 declare function require(moduleName: string): any;

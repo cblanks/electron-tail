@@ -1,5 +1,5 @@
 import { app, shell } from 'electron';
-const pjson = require('../package.json')
+const pjson = require('../../package.json')
 
 const isMac = process.platform === 'darwin'
 
