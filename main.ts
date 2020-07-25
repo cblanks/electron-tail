@@ -2,7 +2,7 @@ import { app, BrowserWindow, Menu } from 'electron';
 import * as path from 'path';
 import { template } from './src/electron-app/menu-template';
 import { environment } from './src/environments/environment';
-
+const windowStateKeeper = require('electron-window-state');
 declare function require(moduleName: string): any;
 
 if (!environment.production) {
@@ -15,13 +15,21 @@ if (!environment.production) {
 }
 
 function createWindow() {
+  // Load the previous state with fallback to defaults
+  let mainWindowState = windowStateKeeper({
+    defaultWidth: 900,
+    defaultHeight: 600
+  });
+  
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    height: 600,
+    x: mainWindowState.x,
+    y: mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
-    },
-    width: 900,
+    }
   });
 
   // Load the app content.
