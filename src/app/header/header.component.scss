@@ -1,0 +1,11 @@
+@import '../../styles/variables';
+
+.spacer {
+  flex: 1;
+}
+
+nav {
+  background-color: #1976d2;
+  color: white;
+  height: $header-height;
+}
